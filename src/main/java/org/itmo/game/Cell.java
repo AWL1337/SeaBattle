@@ -1,10 +1,8 @@
-package org.itmo;
+package org.itmo.game;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
-@Getter
+@Data
 @Builder
 @RequiredArgsConstructor
 public class Cell {
