@@ -22,17 +22,20 @@ public class Player {
         }
 
         hitMap[cell.getRow()][cell.getCol()] = "0";
-        return ships.stream().anyMatch(ship -> {
-            boolean res = ship.isHit(cell);
-            if (res) {
-                hitMap[cell.getRow()][cell.getCol()] = "X";
-                if (!ship.isAlive()) {
-                    ships.remove(ship);
-                }
 
-            }
-            return res;
-        });
+        Ship hitShip = ships.stream().filter(ship -> ship.isHit(cell)).findAny().orElse(null);
+
+        if (hitShip == null) {
+            return false;
+        }
+
+        hitMap[cell.getRow()][cell.getCol()] = "X";
+
+        if (!hitShip.isAlive()) {
+            ships.remove(hitShip);
+        }
+
+        return true;
     }
 
     public void addShip(List<Ship> ships) {

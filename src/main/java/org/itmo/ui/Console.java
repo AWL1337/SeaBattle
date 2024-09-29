@@ -31,6 +31,15 @@ public class Console {
         return new Cell(row, col);
     }
 
+    public void Wait() {
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+    }
+
+    public void Print(String message) {
+        System.out.println(message);
+    }
+
 
     public void showPlayerStatus(Player src, Player target) {
         System.out.println("Yours ships:");

@@ -1,6 +1,7 @@
 package org.itmo.game;
 
 import lombok.RequiredArgsConstructor;
+import org.itmo.exceptions.CellAlreadyHitException;
 import org.itmo.ship.ShipSetup;
 import org.itmo.ui.Console;
 
@@ -19,7 +20,13 @@ public class Game {
 
         while (!playerManager.isOver()) {
             console.showPlayerStatus(playerManager.getPlayer(), playerManager.getTargetPlayer());
-            playerManager.hit(console.readCell());
+            try {
+                playerManager.hit(console.readCell());
+            } catch (CellAlreadyHitException e) {
+                console.Print(e.getMessage());
+                continue;
+            }
+            console.Wait();
         }
     }
 }
