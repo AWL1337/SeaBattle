@@ -16,9 +16,9 @@ public class ShipFactory {
 
         Cell bow;
         if (vertical) {
-            bow = Cell.builder().row(stern.getRow() - shipSize).col(stern.getCol()).build();
+            bow = Cell.builder().row(stern.getRow() - shipSize + 1).col(stern.getCol()).build();
         } else {
-            bow = Cell.builder().row(stern.getRow()).col(stern.getCol() + shipSize).build();
+            bow = Cell.builder().row(stern.getRow()).col(stern.getCol() + shipSize - 1).build();
         }
 
         if (!stern.between(mapStart, mapEnd)) {
